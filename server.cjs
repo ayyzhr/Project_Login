@@ -8,12 +8,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// =========================
+// DATABASE
+// =========================
+
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "login_db",
-  port: 3306
+  host: process.env.MYSQLHOST || "localhost",
+  user: process.env.MYSQLUSER || "root",
+  password: process.env.MYSQLPASSWORD || "",
+  database: process.env.MYSQLDATABASE || "login_db",
+  port: Number(process.env.MYSQLPORT) || 3306
 });
 
 db.connect((err) => {
@@ -28,6 +32,7 @@ db.connect((err) => {
 // =========================
 // TEST SERVER
 // =========================
+
 app.get("/", (req, res) => {
   res.send("Server Login aktif!");
 });
@@ -35,6 +40,7 @@ app.get("/", (req, res) => {
 // =========================
 // LOGIN
 // =========================
+
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -69,6 +75,7 @@ app.post("/login", (req, res) => {
 // =========================
 // SIGN UP
 // =========================
+
 app.post("/signup", (req, res) => {
   const { email, password } = req.body;
 
@@ -131,6 +138,9 @@ app.post("/signup", (req, res) => {
 // =========================
 // SERVER
 // =========================
-app.listen(3000, "127.0.0.1", () => {
-  console.log("Server berjalan di http://localhost:3000");
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server berjalan di port ${PORT}`);
 });
