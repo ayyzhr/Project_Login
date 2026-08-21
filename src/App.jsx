@@ -7,6 +7,7 @@ import { Dashboard } from "./Dashboard";
 function App() {
   const [page, setPage] = useState("login");
   const [userEmail, setUserEmail] = useState("");
+  const [loginKey, setLoginKey] = useState(0);
 
   // Setelah login berhasil
   const handleLoginSuccess = (email) => {
@@ -17,6 +18,13 @@ function App() {
   // Logout
   const handleLogout = () => {
     setUserEmail("");
+    setLoginKey((prev) => prev + 1);
+    setPage("login");
+  };
+
+  // Kembali ke Login setelah Sign Up
+  const handleBackToLogin = () => {
+    setLoginKey((prev) => prev + 1);
     setPage("login");
   };
 
@@ -24,7 +32,7 @@ function App() {
   if (page === "signup") {
     return (
       <Signup
-        onBackToLogin={() => setPage("login")}
+        onBackToLogin={handleBackToLogin}
       />
     );
   }
@@ -42,6 +50,7 @@ function App() {
   // Halaman Login
   return (
     <Login5
+      key={loginKey}
       onSignup={() => setPage("signup")}
       onLoginSuccess={handleLoginSuccess}
     />

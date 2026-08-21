@@ -25,6 +25,8 @@ body {
   color: #f9f9f9;
   background: #17171f;
   font-family: "Euclid Circular A", "Poppins", sans-serif;
+  position: relative;
+  isolation: isolate;
 }
 
 @media (width >= 500px) {
@@ -39,6 +41,8 @@ body {
   left: -55vmin;
   width: 110vmin;
   height: 110vmin;
+  z-index: -1;
+  pointer-events: none;
   border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
   background: #6a65ff;
 }
@@ -52,6 +56,7 @@ body {
   height: inherit;
   border-radius: inherit;
   background: #3c85fe;
+  pointer-events: none;
 }
 
 
@@ -63,6 +68,7 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 3;
+  pointer-events: auto;
   width: 94%;
   margin: 0 20px;
   padding: 84px 30px 54px;
@@ -109,6 +115,7 @@ body {
 
 .login-5-textbox {
   position: relative;
+  z-index: 4;
 }
 
 .login-5-textbox i {
@@ -116,6 +123,7 @@ body {
   top: 50%;
   left: 20px;
   translate: 0 -50%;
+  pointer-events: none;
 }
 
 .login-5-card form :is(input, button) {
@@ -133,10 +141,13 @@ body {
 }
 
 .login-5-textbox input {
+  position: relative;
+  z-index: 5;
   border: 0;
   padding: 0 24px 0 44px;
   color: #f9f9f9;
   background: rgb(255 255 255 / 4%);
+  pointer-events: auto;
 }
 
 .login-5-textbox input::placeholder {
@@ -144,6 +155,8 @@ body {
 }
 
 .login-5-card form > button {
+  position: relative;
+  z-index: 5;
   border: 0;
   color: #f9f9f9;
   background: rgb(255 255 255 / 8%);
@@ -151,6 +164,7 @@ body {
   place-items: center;
   font-weight: 500;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .login-5-card form > button:hover {
@@ -158,6 +172,8 @@ body {
 }
 
 .login-5-card > form > a {
+  position: relative;
+  z-index: 5;
   opacity: 0.75;
   display: flex;
   align-items: center;
@@ -166,6 +182,7 @@ body {
   margin-bottom: 12px;
   color: #f9f9f9;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 .login-5-card > form > a:hover {
@@ -178,12 +195,15 @@ body {
 ========================= */
 
 .login-5-card > footer {
+  position: relative;
+  z-index: 5;
   color: rgb(255 255 255 / 38%);
 }
 
 .login-5-card > footer > a {
   color: #f9f9f9;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 .login-5-card > footer > a:hover {
@@ -219,6 +239,7 @@ body {
   height: 75vmin;
   border-radius: 50%;
   background: #6a65ff;
+  pointer-events: none;
 }
 
 .dashboard-page::after {
@@ -230,6 +251,7 @@ body {
   height: 75vmin;
   border-radius: 50%;
   background: #3c85fe;
+  pointer-events: none;
 }
 
 
